@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/26 17:23:52 by cbolat            #+#    #+#             */
+/*   Updated: 2022/12/26 17:47:01 by cbolat           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
@@ -31,8 +42,6 @@ void	ft_printnbr(int n)
 
 int	main(void)
 {
-	int a = (int)signal;
-	printf("%d",a);
 	write(1, "Server PID: ", 13);
 	ft_printnbr(getpid());
 	write(1, "\n", 1);

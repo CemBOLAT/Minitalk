@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
+#include "minitalk.h"
 
 int	ft_atoi(const char *str)
 {
@@ -34,28 +33,46 @@ int	ft_atoi(const char *str)
 	return (total * n);
 }
 
+int	ft_unicode_check(char *str)
+{
+	int n;
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		n = str[i];
+		if (!(n >= 0 && n <= 127))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
-	int	len;
+	int	i;
 	int	size;
 	int	pid;
 
 	if (argc != 3)
 		return (write(2, "Argument error!!", 16));
+	if (ft_unicode_check(argv[2]))
+		return (write(2, "You tried to send UNICODE character\n", 37));
 	pid = ft_atoi(argv[1]);
-	len = 0;
-	while ((argv[2][len]))
+	i = 0;
+	while ((argv[2][i]))
 	{
 		size = 8;
 		while (size--)
 		{
-			if (((argv[2][len] >> size) & 1) == 0)
+			if (((argv[2][i] >> size) & 1) == 0)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(100);
+			usleep(DELAY_TIME);
 		}
-		len++;
+		i++;
 	}
 	return (0);
 }

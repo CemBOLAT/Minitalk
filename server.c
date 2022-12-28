@@ -10,22 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <signal.h>
+#include "minitalk.h"
 
-void	signalcatcher(int signal)
+void	ft_signalcatcher(int signal)
 {
-	static unsigned char	total;
-	static int				mi = 128;
+	static char	total;
+	static int	max = 128;
 
 	if (signal == SIGUSR2)
-		total += mi;
-	mi /= 2;
-	if (mi == 0)
+		total += max;
+	max /= 2;
+	if (max == 0)
 	{
 		write (1, &total, 1);
-		mi = 128;
+		max = 128;
 		total = 0;
 	}
 }
@@ -45,8 +43,8 @@ int	main(void)
 	write(1, "Server PID: ", 13);
 	ft_printnbr(getpid());
 	write(1, "\n", 1);
-	signal(SIGUSR1, signalcatcher);
-	signal(SIGUSR2, signalcatcher);
+	signal(SIGUSR1, ft_signalcatcher);
+	signal(SIGUSR2, ft_signalcatcher);
 	while (1)
 		pause();
 	return (0);

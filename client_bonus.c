@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alcelik <alcelik@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 14:30:57 by alcelik           #+#    #+#             */
-/*   Updated: 2022/12/20 19:00:35 by alcelik          ###   ########.fr       */
+/*   Created: 2022/12/26 17:24:06 by cbolat            #+#    #+#             */
+/*   Updated: 2022/12/26 17:47:43 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+#include "minitalk.h"
 
 int	ft_atoi(const char *str)
 {
@@ -40,31 +29,32 @@ int	ft_atoi(const char *str)
 	while (str[i] <= '9' && str[i] >= '0')
 		total = (total * 10) + (str[i++] - 48);
 	if (str[i] != '\0')
-		return (write(1, "pid error!\n", 11));
+		return (write(1, "Pid ERROR!\n", 11));
 	return (total * n);
 }
 
 int	main(int argc, char **argv)
 {
-	int	len;
+	int	i;
 	int	size;
-	int	pidd;
+	int	pid;
 
 	if (argc != 3)
 		return (write(2, "Argument error!!", 16));
-	pidd = ft_atoi(argv[1]);
-	len = -1;
-	while ((argv[2][++len]))
+	pid = ft_atoi(argv[1]);
+	i = 0;
+	while ((argv[2][i]))
 	{
 		size = 8;
 		while (size--)
 		{
-			if (((argv[2][len] >> size) % 2) == 0)
-				kill(pidd, SIGUSR1);
+			if (((argv[2][i] >> size) & 1) == 0)
+				kill(pid, SIGUSR1);
 			else
-				kill(pidd, SIGUSR2);
-			usleep(70);
+				kill(pid, SIGUSR2);
+			usleep(DELAY_TIME);
 		}
+		i++;
 	}
 	return (0);
 }

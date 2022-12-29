@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 17:24:06 by cbolat            #+#    #+#             */
-/*   Updated: 2022/12/26 17:47:43 by cbolat           ###   ########.fr       */
+/*   Updated: 2022/12/29 11:59:17 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	ft_atoi(const char *str)
 
 int	ft_unicode_check(char *str)
 {
-	int n;
-	int i;
+	int	n;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	if (argc != 3)
 		return (write(2, "Argument error!!", 16));
 	if (ft_unicode_check(argv[2]))
-		return (write(2, "You tried to send UNICODE character\n", 37));
+		return (write(2, "You cannot send UNICODE character\n", 35));
 	pid = ft_atoi(argv[1]);
 	i = 0;
 	while ((argv[2][i]))

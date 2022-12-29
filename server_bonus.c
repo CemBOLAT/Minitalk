@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 17:23:52 by cbolat            #+#    #+#             */
-/*   Updated: 2022/12/26 17:47:01 by cbolat           ###   ########.fr       */
+/*   Updated: 2022/12/29 11:53:20 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_signalcatcher(int signal)
 {
 	static unsigned char	total;
-	static int	            max = 128;
+	static int				max = 128;
 
 	if (signal == SIGUSR2)
 		total += max;

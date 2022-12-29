@@ -29,8 +29,7 @@ $(SERVER_BONUS):
 
 clean:
 		@rm -rf $(SERVER) $(CLIENT) $(SERVER_BONUS) $(CLIENT_BONUS)
-		@echo "\033[92mclean completed\033[om"
-		
+
 fclean: clean
 
 re: fclean all

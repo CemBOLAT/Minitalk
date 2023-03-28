@@ -26,5 +26,5 @@
 
 >> Bonus Part
 
-• The server acknowledges every message received by sending back a signal to the client.
-• Unicode characters support! < I have done >
+- The server acknowledges every message received by sending back a signal to the client. 
+- Unicode characters support! < I have done >

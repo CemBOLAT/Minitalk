@@ -6,11 +6,13 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 17:24:06 by cbolat            #+#    #+#             */
-/*   Updated: 2023/03/13 22:50:26 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/09 00:48:53 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
+#include <signal.h>
+#include <unistd.h>
 
 int	ft_atoi(const char *str)
 {
